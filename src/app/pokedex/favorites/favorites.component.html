@@ -1,0 +1,55 @@
+<h1 class="title">Favorite Pokémon</h1>
+
+<br>
+<div *ngIf="selectedpokemons">
+  <div class="container" *ngFor="let pokemon of selectedpokemons">
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div row>
+          <div id="name" class="col-md-11">
+            <h1> {{pokemon?.name|titlecase}}{{i}}</h1>
+          </div>
+          <div class="col-md-1">
+            <img src="../../assets/images/favoriteIcon.png" alt="starImage" id="starImage">
+          </div>
+        </div>
+
+
+
+        <br>
+        <div id="image">
+          <img src="{{pokemon?.sprites?.front_default}}" class="img" *ngIf="show; else elseBlock" alt="pokemon">
+          <ng-template #elseBlock>
+            <img src="{{pokemon?.sprites?.front_shiny}}" class="img" alt="shiny-pokemon">
+          </ng-template>
+          <div>
+
+            <button class="btn btn-danger" (click)="removePokemon(pokemon)">Delete Favorites</button>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!selectedpokemons || selectedpokemons.length==0">
+  <h1>You do not have any Favorites yet, add them when viewing your favorite Pokémon in Detail!</h1>
+</div>
+
+
+
+
+<div class="btnBox">
+  <a [routerLink]="['/pokedex']">
+    <button class="btn btn-danger"> Back to Pokédex</button>
+  </a>
+  <button class="btn btn-primary" (click)="show=!show; Btnshow=!Btnshow" *ngIf="Btnshow; else thisBlock">Change to
+    Shiny</button>
+  <ng-template #thisBlock>
+    <button class="btn btn-primary" (click)="show=!show; Btnshow=!Btnshow">Change Back to Normal</button>
+  </ng-template>
+
+</div>

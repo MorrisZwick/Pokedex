@@ -1,0 +1,11 @@
+<h1 class="text-center">Pokédex</h1>
+<hr>
+<br>
+<div class="container overflow-hidden">
+  <div class="row position" routerLinkActive="active">
+
+    <app-pokedex-list *ngFor="let pokemon of pokemons" [pokemon]="pokemon">
+    </app-pokedex-list>
+
+  </div>
+</div>

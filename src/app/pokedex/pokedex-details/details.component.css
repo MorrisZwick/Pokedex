@@ -1,0 +1,43 @@
+.title {
+    text-align: center;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.pokeBox {
+    border: 2px solid black;
+    padding: 0px;
+    background: #f5f5f5;
+    box-shadow:
+        10px 15px 3px #d0d0d0;
+}
+
+#midcolumn {
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.framerow {
+    border-bottom: 2px solid black;
+}
+
+
+.img {
+    height: 66%;
+    width: 66%;
+
+    margin-left: 15%;
+}
+
+
+
+
+#pointlessList {
+    list-style-type: none;
+    padding: 0px;
+}

@@ -1,0 +1,115 @@
+<h1 class="title">Pokémon Details</h1>
+<br>
+<br>
+<div class="container pokeBox">
+
+  <div class="row row-no-gutters">
+
+    <div class="col-lg-6">
+      <div id="image">
+        <img src="{{selectedpokemons?.sprites?.front_default}}" class="img" alt="normalPokemon"
+          *ngIf="show; else elseBlock">
+        <ng-template #elseBlock>
+          <img src="{{selectedpokemons?.sprites?.front_shiny}}" class="img" alt="shinyPokemon">
+        </ng-template>
+      </div>
+    </div>
+
+
+
+    <div class="col-lg-3" id="midcolumn">
+      <div id="name" class="framerow">
+        <h3>Name:</h3>
+        <h1> {{selectedpokemons?.name|titlecase}}</h1>
+      </div>
+
+      <div id="id" class="framerow">
+        <h3>Index:</h3>
+        <h1> #{{selectedpokemons?.id}}</h1>
+      </div>
+
+      <div id="height" class="framerow">
+        <h3>Height:<br>
+          {{selectedpokemons?.height}}</h3>
+      </div>
+
+      <div id="weight" class="framerow">
+        <h3>Weight:<br>
+          {{selectedpokemons?.weight}}</h3>
+      </div>
+
+      <div id="type">
+        <h3>Type:
+          <ul id="pointlessList">
+            <li>{{selectedpokemons?.types[0].type.name|titlecase}}</li>
+            <li *ngIf="selectedpokemons?.types[1], else thatBreak">{{selectedpokemons?.types[1].type.name|titlecase}}
+            </li>
+            <ng-template #thatBreak><br></ng-template>
+          </ul>
+        </h3>
+      </div>
+
+
+
+    </div>
+
+
+    <div class="col-lg-3">
+
+      <div id="stats" class="framerow">
+        <h3>Stats:<br>
+          <ul id="pointlessList">
+            <li>Hp: {{selectedpokemons?.stats[0].base_stat}}</li>
+            <li>Attack: {{selectedpokemons?.stats[1].base_stat}}</li>
+            <li>Defense: {{selectedpokemons?.stats[2].base_stat}}</li>
+            <li>Special Attack: {{selectedpokemons?.stats[3].base_stat}}</li>
+            <li>Special Defense: {{selectedpokemons?.stats[4].base_stat}}</li>
+            <li>Speed: {{selectedpokemons?.stats[5].base_stat}}</li>
+          </ul>
+        </h3>
+      </div>
+
+      <div id="ability" class="framerow">
+        <h3>Ability:
+          <ul id="pointlessList">
+            <li>{{selectedpokemons?.abilities[0].ability.name|titlecase}}</li>
+            <li *ngIf="selectedpokemons?.abilities[1]">{{selectedpokemons?.abilities[1].ability.name|titlecase}}</li>
+          </ul>
+        </h3>
+      </div>
+
+      <div id="moves">
+        <h3>
+          Moves:
+          <ul id="pointlessList">
+            <li *ngIf="selectedpokemons?.moves[0]">{{selectedpokemons?.moves[0].move.name|titlecase}}</li>
+            <li *ngIf="selectedpokemons?.moves[1]">{{selectedpokemons?.moves[1].move.name|titlecase}}</li>
+          </ul>
+        </h3>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+
+<div class="container">
+  <a [routerLink]="['/pokedex']">
+    <button class="btn btn-danger" style="margin-right: 10px;"> Back to Pokédex</button>
+  </a>
+
+  <button class="btn btn-primary" style="margin-right: 10px;" (click)="onSubmit()"> Add to Favorites </button>
+
+  <button class="btn btn-info" (click)="goBack()">
+    <- Back </button>
+      <button class="btn btn-info" (click)="goForth()" style="margin-right: 10px;">Forth -> </button>
+
+      <button class="btn btn-primary" (click)="show=!show; BtnShow=!BtnShow" *ngIf="BtnShow; else thisBlock">Change to
+        Shiny</button>
+      <ng-template #thisBlock>
+        <button class="btn btn-primary" (click)="show=!show; BtnShow=!BtnShow">Change Back to Normal</button>
+      </ng-template>
+</div>
